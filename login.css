@@ -1,0 +1,68 @@
+/*  || Variables */
+
+:root {
+    --primary-color: #222;
+    --secondary-color: #25aae859;
+}
+
+/*  || Reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*  || General */
+
+body {
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+.main {
+    width: 40rem;
+    height: 29rem;
+    text-align: center;
+    background-color: #333;
+    color: black;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px var(--secondary-color);
+}
+
+.main input:first-child {
+    margin-bottom: 10px;
+}
+
+.back_d {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 7px;
+    width: 80px;
+    text-align: center;
+}
+
+.back:hover , .back:visited {
+    text-decoration: none;
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+
+button {
+    background-color: var(--primary-color);
+    margin-top: 12px;
+    padding: 7px 15px 7px 15px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+}
+
+.errorm {
+    color: red;
+}

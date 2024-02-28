@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Mathieu Plassard" />
+    <meta name="keywords" content="Mathieu Plassard, Mathieu Plassard's website, Plassard, Mathieu, Web developer, Mathieu Plassard"/>
+    <meta name="description" content="Mathieu Plassard | Web Developer, Designer, Expert and student looking for an employment opportunity."/>
+    <link rel="icon" href="apple.png" type="image/x-icon" />
+    <title>Login | Mathieu Plassard</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
+    <link rel="stylesheet" href="login.css"/>
+  </head>
+
+  <body>
+    <div class="main">
+      <h1>Login</h1>
+      <p>Login to Access Certain Features</p>
+      <div class="form">
+        <input id="email" class="input_u form-control" type="text" placeholder="Email"/>
+        <input id="password" class="input_p form-control" type="password" placeholder="Password"/>
+      </div>
+      <button onclick="login()" >Login</button>
+      <p class="errorm" id="error"></p>
+    </div>
+
+    <div class="back_d">
+      <a href="index.html" class="back">Back</a>
+    </div>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+    <script>
+      console.log("script loaded");
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyBlzJbA4RxvwVJzAsqCjSZoBWYUSdaLzvs",
+        authDomain: "mathieuplassard-98adc.firebaseapp.com",
+        databaseURL: "https://mathieuplassard-98adc-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "mathieuplassard-98adc",
+        storageBucket: "mathieuplassard-98adc.appspot.com",
+        messagingSenderId: "846335320576",
+        appId: "1:846335320576:web:bd69e884c642520f40eee5",
+        measurementId: "G-2VL1M6HE84",
+      };
+
+      firebase.initializeApp(firebaseConfig);
+
+
+      function login() {
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+
+        firebase
+          .auth()
+          .signInWithEmailAndPassword(email, password)
+          .then((userCredential) => {
+            // Signed in
+            var user = userCredential.user;
+            alert("Logged in successfully");
+            console.log("User successfully logged in");
+            window.location = "admin.html";
+          })
+          .catch((error) => {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            if (
+              errorMessage ==
+              '{"error":{"code":400,"message":"INVALID_LOGIN_CREDENTIALS","errors":[{"message":"INVALID_LOGIN_CREDENTIALS","domain":"global","reason":"invalid"}]}}'
+            ) {
+              errorMessage = "Invalid email or password";
+              console.log("invaled credentials");
+            }
+            document.getElementById("error").innerHTML = errorMessage;
+            console.log("Error: " + errorMessage);
+            console.log("Error code: " + errorCode);
+          });
+      }
+
+    </script>
+  </body>
+</html>

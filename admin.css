@@ -1,0 +1,28 @@
+/*  || Variables */
+:root {
+    /* Main */
+    --bg-color: #222;
+    --primary-color: #333;
+    --secondary-color: #25aae859;
+    /* Font */
+    --font: 'Roboto', sans-serif;
+    --fs-main: 22px;
+    --fs-title: 32px;
+    --fc: white;
+}
+
+/*  || Reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General */
+
+body {
+    background-color: var(--bg-color);
+    color: var(--fc);
+    font-family: var(--font);
+}
